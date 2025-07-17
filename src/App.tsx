@@ -120,112 +120,56 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Apply Now Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* <div className="fixed bottom-6 right-6 z-50">
         <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold">
           Apply Now
         </button>
-      </div>
+      </div> */}
       <Nav />
 
       {/* Hero Section */}
-      <section className="relative bg-gray-50 text-gray-800 py-20 min-h-screen flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800">
-                Let's Supercharge<br />
-                Your Career
-              </h1>
-              <p className="text-xl text-gray-600 max-w-lg">
-                Empowering a new generation of finance professionals.
-              </p>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-                <div className="text-center md:text-left">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Briefcase className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <span className="text-3xl font-bold text-gray-800">500+</span>
-                  </div>
-                  <p className="text-gray-600 font-medium">Placements</p>
-                </div>
-                <div className="text-center md:text-left">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-red-600" />
-                    </div>
-                    <span className="text-3xl font-bold text-gray-800">1000+</span>
-                  </div>
-                  <p className="text-gray-600 font-medium">Career Transitions</p>
-                </div>
-                <div className="text-center md:text-left">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                      <BookOpen className="w-5 h-5 text-green-600" />
-                    </div>
-                    <span className="text-3xl font-bold text-gray-800">10+</span>
-                  </div>
-                  <p className="text-gray-600 font-medium">Courses and Programs</p>
-                </div>
-              </div>
-              
-              {/* CTA Button */}
-              <div>
-                <button className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-                  Apply Now
-                </button>
-              </div>
-            </div>
-            
-            {/* Right Content - Hero Image with Geometric Shapes */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Geometric Background Shapes */}
-                <div className="absolute -top-8 -left-8 w-32 h-32 bg-blue-200 rounded-lg transform rotate-12 opacity-80"></div>
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-red-200 rounded-lg transform -rotate-12 opacity-80"></div>
-                <div className="absolute -bottom-6 -left-6 w-28 h-28 bg-yellow-200 rounded-lg transform rotate-45 opacity-80"></div>
-                <div className="absolute top-1/2 -right-8 w-20 h-20 bg-green-200 rounded-lg transform -rotate-45 opacity-80"></div>
-                
-                {/* Main Hero Image Container */}
-                <div className="relative bg-gradient-to-br from-blue-400 via-blue-500 to-red-500 rounded-2xl p-8 shadow-2xl">
-                  <div className="w-80 h-96 bg-white rounded-xl flex items-center justify-center relative overflow-hidden">
-                    {/* Professional Person Illustration */}
-                    <div className="text-center">
-                      <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <GraduationCap className="w-16 h-16 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">Finance Professional</h3>
-                      <p className="text-gray-600">Ready for Success</p>
-                      
-                      {/* Phone/Device Mockup */}
-                      <div className="mt-6 bg-gray-800 rounded-lg p-3 inline-block">
-                        <div className="w-16 h-24 bg-green-500 rounded flex items-center justify-center">
-                          <Calculator className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+ <section
+className="relative text-white py-16 flex items-center min-h-[70vh]"  style={{
+    backgroundColor: '#0E1423',
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+  }}
+>
+  <div className="container mx-auto px-8 relative z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      {/* Left Content */}
+      <div className="space-y-8">
+        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+      We help you master the skills top employers want.
+        </h1>
+        <p className="text-lg md:text-xl max-w-xl text-white/80">
+Learn. Lead. Shape the future of finance — with skills and mentorship that matter.        </p>
+        <a href="#apply-form">
+       <button className="mt-6 bg-[#E31E24] hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold text-lg transition duration-300">
+  Apply Now
+</button>
+
+        </a>
+      </div>
+
+      {/* Hero Image */}
+      <div className="flex justify-center lg:justify-end">
+        <img
+          src="/herosection.jpg"
+          alt="Super Accountant Hero"
+          className="h-[420px] w-auto object-contain drop-shadow-2xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
       
-      {/* Partnership Section */}
-      <section className="py-12 bg-white border-t">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-700 mb-8">
-            We've Partnered With Leading Institutions And Corporations
-          </h2>
-          <div className="flex justify-center items-center space-x-8 opacity-60">
-            <div className="text-gray-400 font-semibold">PARTNER LOGOS</div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Why SuperAccountant */}
       <section className="py-16 bg-gray-50">
@@ -236,7 +180,7 @@ function App() {
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">100% Job Assurance</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">100% Placement Assistance</h3>
               <p className="text-gray-600">7 Guaranteed Interviews</p>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -250,7 +194,7 @@ function App() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Avg Salary: ₹4 LPA</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">Avg Salary: ₹3L-₹4L LPA</h3>
               <p className="text-gray-600">Industry-Standard Packages</p>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -265,48 +209,47 @@ function App() {
       </section>
 
       {/* Program Overview */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6 text-gray-800">Program Overview</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              SuperAccountant is a 3-month program designed to make you industry-ready in finance and accounting. 
-              You'll gain real-world skills, industry-recognized tools, and personal mentorship to land a job fast.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-            <div className="text-center p-6 bg-blue-50 rounded-lg">
-              <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">Duration</h3>
-              <p className="text-sm text-gray-600">3 Months (Weekdays)</p>
-            </div>
-            <div className="text-center p-6 bg-green-50 rounded-lg">
-              <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">Fees</h3>
-              <p className="text-sm text-gray-600">₹24,999/- (Incl. GST)</p>
-            </div>
-            <div className="text-center p-6 bg-red-50 rounded-lg">
-              <MapPin className="w-8 h-8 text-red-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">Location</h3>
-              <p className="text-sm text-gray-600">Downtown Mall, Hyderabad</p>
-            </div>
-            <div className="text-center p-6 bg-purple-50 rounded-lg">
-              <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">Avg Salary</h3>
-              <p className="text-sm text-gray-600">₹4 LPA</p>
-            </div>
-            <div className="text-center p-6 bg-yellow-50 rounded-lg">
-              <GraduationCap className="w-8 h-8 text-yellow-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">Eligibility</h3>
-              <p className="text-sm text-gray-600">B.Com/M.Com/MBA students & grads</p>
-            </div>
-          </div>
-        </div>
-      </section>
+     <section className="py-16 bg-white">
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto text-center mb-12">
+      <h2 className="text-4xl font-bold mb-6 text-gray-800">Program Overview</h2>
+      <p className="text-lg text-gray-600 mb-8">
+        SuperAccountant is a 45-day program designed to make you industry-ready in finance and accounting. 
+        You'll gain real-world skills, industry-recognized tools, and personal mentorship to land a job fast.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <div className="text-center p-6 bg-blue-50 rounded-lg">
+        <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+        <h3 className="font-semibold text-gray-800">Duration</h3>
+        <p className="text-sm text-gray-600">45 Days</p>
+      </div>
+
+      <div className="text-center p-6 bg-green-50 rounded-lg">
+        <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
+        <h3 className="font-semibold text-gray-800">Fees</h3>
+        <p className="text-sm text-gray-600">₹24,999/- (Incl. GST)</p>
+      </div>
+
+      <div className="text-center p-6 bg-red-50 rounded-lg">
+        <MapPin className="w-8 h-8 text-red-600 mx-auto mb-3" />
+        <h3 className="font-semibold text-gray-800">Location</h3>
+        <p className="text-sm text-gray-600">Downtown Mall, Lakdikapul, Hyderabad</p>
+      </div>
+
+      <div className="text-center p-6 bg-yellow-50 rounded-lg">
+        <GraduationCap className="w-8 h-8 text-yellow-600 mx-auto mb-3" />
+        <h3 className="font-semibold text-gray-800">Eligibility</h3>
+        <p className="text-sm text-gray-600">B.Com/M.Com/MBA students & grads</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Program Curriculum */}
-      <section className="py-16 bg-gray-50">
+      <section  id="curriculum" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Program Curriculum</h2>
           <div className="max-w-4xl mx-auto">
@@ -336,7 +279,8 @@ function App() {
               ))}
             </div>
             <div className="text-center mt-8">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center gap-2 mx-auto">
+              
+              <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center gap-2 mx-auto">
                 <Download className="w-5 h-5" />
                 Download Full Brochure
               </button>
@@ -346,38 +290,60 @@ function App() {
       </section>
 
       {/* Learning Journey */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">Learning Journey</h2>
-          <div className="text-center mb-12">
-            <span className="bg-gradient-to-r from-red-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold">
-              Be Industry-Ready in Just 90 Days!
-            </span>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {journeySteps.map((step, index) => (
-                <div key={index} className="flex items-start mb-8 last:mb-0">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold mr-6">
-                    {index + 1}
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </div>
-                  {index < journeySteps.length - 1 && (
-                    <div className="absolute left-6 mt-12 w-0.5 h-8 bg-gray-300"></div>
-                  )}
-                </div>
-              ))}
+   <section
+className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
+    backgroundColor: '#0E1423',
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+  }}>
+  <div className="container mx-auto px-4">
+    <h2 className="text-4xl font-bold text-center mb-6 text-white">
+      Learning Journey
+    </h2>
+
+    <div className="text-center mb-16">
+      <span className="bg-[#BCE3F9] text-[#264174] px-6 py-2 rounded-full font-semibold">
+        Be Industry-Ready in Just 45 Days!
+      </span>
+    </div>
+
+    <div className="overflow-x-auto">
+      <div className="flex gap-10 justify-start md:justify-center px-4 md:px-0 min-w-[700px] lg:min-w-full relative">
+        {journeySteps.map((step, index) => (
+          <div
+            key={index}
+            className="relative flex flex-col items-center text-center w-64"
+          >
+            {/* Dot + Line */}
+            <div className="z-10 w-12 h-12 bg-[#BCE3F9] text-[#264174] rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg">
+              {index + 1}
             </div>
+
+            {/* Connecting line */}
+            {index < journeySteps.length - 1 && (
+              <div className="absolute top-6 left-full w-10 h-0.5 bg-[#BCE3F9] hidden md:block"></div>
+            )}
+
+            {/* Content */}
+            <h3 className="text-xl font-semibold text-white mb-2">
+              {step.title}
+            </h3>
+            <p className="text-[#BCE3F9] text-sm">{step.description}</p>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
       {/* Testimonials */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Success Stories</h2>
           <div className="max-w-4xl mx-auto">
@@ -401,10 +367,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section id ="FAQ" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h2>
           <div className="max-w-3xl mx-auto">
@@ -449,12 +415,13 @@ function App() {
                   </div>
                   <div className="flex items-center gap-4">
                     <MapPin className="w-6 h-6" />
-                    <span>Unit 422, Downtown Mall, Hyderabad</span>
+                    <span>Unit 422, Downtown Mall,Lakdikapul, Hyderabad</span>
                   </div>
                 </div>
               </div>
               
               <div>
+                <div id="apply-form">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <input
@@ -503,6 +470,7 @@ function App() {
                     Apply for Counselling
                   </button>
                 </form>
+                </div>
               </div>
             </div>
           </div>
@@ -531,7 +499,7 @@ function App() {
               <div className="space-y-2 text-gray-400">
                 <p>+91 96529 74428</p>
                 <p>info@superaccountant.in</p>
-                <p>Unit 422, Downtown Mall, Hyderabad</p>
+                <p>Unit 422, Downtown Mall,Lakdikapul, Hyderabad</p>
               </div>
             </div>
             <div>
