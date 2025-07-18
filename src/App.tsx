@@ -38,12 +38,35 @@ function App() {
     query: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({ name: '', email: '', phone: '', query: '' });
+    try {
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbyS5Eo98uMDk1CwAYmRE7cOkcZ-O7W6jt676WMqD-M/exec',
+        {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      const result = await response.json();
+      console.log('Google Sheets response:', result);
+  
+      if (result.result === 'success') {
+        alert('Thank you for your inquiry! We will contact you soon.');
+        setFormData({ name: '', email: '', phone: '', query: '' });
+      } else {
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error submitting the form. Please try again.');
+    }
+
   };
 
   const faqData = [
@@ -128,9 +151,10 @@ function App() {
       <Nav />
 
       {/* Hero Section */}
- <section
-className="relative text-white py-16 flex items-center min-h-[70vh]"  style={{
-    backgroundColor: '#0E1423',
+     {/* Hero Section */}
+<section
+  className="relative min-h-screen flex items-center bg-[#0E1423] overflow-hidden"
+  style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -141,153 +165,228 @@ className="relative text-white py-16 flex items-center min-h-[70vh]"  style={{
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
       {/* Left Content */}
-      <div className="space-y-8">
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-      We help you master the skills top employers want.
+      <div className="space-y-10">
+        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white">
+          Master the Skills <br />
+          <span className="text-[#E31E24]">Top Employers</span> Demand.
         </h1>
-        <p className="text-lg md:text-xl max-w-xl text-white/80">
-Learn. Lead. Shape the future of finance — with skills and mentorship that matter.        </p>
-        <a href="#apply-form">
-       <button className="mt-6 bg-[#E31E24] hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold text-lg transition duration-300">
+
+        <p className="text-xl leading-relaxed text-white/70 max-w-xl">
+          Unlock your future in finance with elite mentorship, practical skills, and career-defining opportunities.
+        </p>
+
+        <div className="flex flex-wrap gap-6 pt-4">
+          <a href="#apply-form">
+          <button className="bg-[#E31E24] text-white px-10 py-4 font-semibold text-lg tracking-wide rounded-full shadow-[0_0_20px_rgba(227,30,36,0.6)] hover:shadow-[0_0_30px_rgba(227,30,36,0.8)] transition duration-300">
   Apply Now
 </button>
 
-        </a>
+
+          </a>
+          <a href="#brochure">
+
+          <button  className="border border-white/20 text-white/80 hover:bg-white/10 px-10 py-4 rounded-full transition duration-300 tracking-wide">
+            Download Brochure
+          </button>
+          </a>
+        </div>
       </div>
 
-      {/* Hero Image */}
-      <div className="flex justify-center lg:justify-end">
-        <img
-          src="/herosection.jpg"
-          alt="Super Accountant Hero"
-          className="h-[420px] w-auto object-contain drop-shadow-2xl"
-        />
+      {/* Right Content: Hero Image */}
+      <div className="flex justify-center lg:justify-end relative">
+        <div className="relative">
+          <img
+            src="/herosection.png"
+            alt="Super Accountant Hero"
+            className="h-[500px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#0E1423] via-transparent to-transparent opacity-20 blur-2xl"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+</section>
+
+
+{/* Why SuperAccountant */}
+<section 
+  className="relative py-24 bg-[#0E1423] text-white "
+  style={{
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay'
+  }}
+>
+  {/* Softer, more natural top gradient */}
+  <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent z-0 pointer-events-none"></div>
+
+  <div className="relative container mx-auto px-8 z-10">
+    <h2 className="text-5xl font-extrabold text-center mb-18 leading-tight tracking-tight">
+      Why <span className="text-[#E31E24]">SuperAccountant?</span>
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
+      <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
+        <div className="w-20 h-20 bg-[#E31E24]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Award className="w-10 h-10 text-[#E31E24]" />
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#E31E24] transition">
+          100% Placement Assistance
+        </h3>
+        <p className="text-white/60 text-base">7 Guaranteed Interviews</p>
+      </div>
+
+      <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
+        <div className="w-20 h-20 bg-[#3B82F6]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Users className="w-10 h-10 text-[#3B82F6]" />
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#3B82F6] transition">
+          100% Hands-on Learning
+        </h3>
+        <p className="text-white/60 text-base">Practical, Real-World Skills</p>
+      </div>
+
+      <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
+        <div className="w-20 h-20 bg-[#10B981]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <TrendingUp className="w-10 h-10 text-[#10B981]" />
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#10B981] transition">
+          Avg Salary: ₹3L-₹4L LPA
+        </h3>
+        <p className="text-white/60 text-base">Industry-Standard Packages</p>
+      </div>
+
+      <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
+        <div className="w-20 h-20 bg-[#8B5CF6]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <BookOpen className="w-10 h-10 text-[#8B5CF6]" />
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#8B5CF6] transition">
+          Tool-Based Learning
+        </h3>
+        <p className="text-white/60 text-base">Excel, Tally, PowerBI</p>
       </div>
     </div>
   </div>
 </section>
 
 
-      
-    
-
-      {/* Why SuperAccountant */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Why SuperAccountant?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-red-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">100% Placement Assistance</h3>
-              <p className="text-gray-600">7 Guaranteed Interviews</p>
-            </div>
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">100% Hands-on Learning</h3>
-              <p className="text-gray-600">Practical, Real-world Skills</p>
-            </div>
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Avg Salary: ₹3L-₹4L LPA</h3>
-              <p className="text-gray-600">Industry-Standard Packages</p>
-            </div>
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Tool-Based Learning</h3>
-              <p className="text-gray-600">Excel, Tally, PowerBI</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Program Overview */}
-     <section className="py-16 bg-white">
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto text-center mb-12">
-      <h2 className="text-4xl font-bold mb-6 text-gray-800">Program Overview</h2>
-      <p className="text-lg text-gray-600 mb-8">
-        SuperAccountant is a 45-day program designed to make you industry-ready in finance and accounting. 
+      <section
+  className="relative py-24 text-white"
+  style={{
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+    backgroundColor: '#0E1423',
+  }}
+>
+  <div className="container mx-auto px-8 relative z-10">
+    <div className="max-w-4xl mx-auto text-center mb-16">
+      <h2 className="text-5xl font-extrabold mb-6 leading-tight tracking-tight">
+        Program <span className="text-[#E31E24]">Overview</span>
+      </h2>
+      <p className="text-lg leading-relaxed text-white/80 max-w-2xl mx-auto">
+        SuperAccountant is a 45-day program designed to make you industry-ready in finance and accounting.
         You'll gain real-world skills, industry-recognized tools, and personal mentorship to land a job fast.
       </p>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div className="text-center p-6 bg-blue-50 rounded-lg">
-        <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-        <h3 className="font-semibold text-gray-800">Duration</h3>
-        <p className="text-sm text-gray-600">45 Days</p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
+      <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
+        <Clock className="w-10 h-10 text-[#BCE3F9] mx-auto mb-4" />
+        <h3 className="font-semibold text-xl text-white mb-1">Duration</h3>
+        <p className="text-white/70 text-base">45 Days</p>
       </div>
-
-      <div className="text-center p-6 bg-green-50 rounded-lg">
-        <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
-        <h3 className="font-semibold text-gray-800">Fees</h3>
-        <p className="text-sm text-gray-600">₹24,999/- (Incl. GST)</p>
+      <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
+        <DollarSign className="w-10 h-10 text-[#10B981] mx-auto mb-4" />
+        <h3 className="font-semibold text-xl text-white mb-1">Fees</h3>
+        <p className="text-white/70 text-base">₹24,999/- (Incl. GST)</p>
       </div>
-
-      <div className="text-center p-6 bg-red-50 rounded-lg">
-        <MapPin className="w-8 h-8 text-red-600 mx-auto mb-3" />
-        <h3 className="font-semibold text-gray-800">Location</h3>
-        <p className="text-sm text-gray-600">Downtown Mall, Lakdikapul, Hyderabad</p>
+      <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
+        <MapPin className="w-10 h-10 text-[#E31E24] mx-auto mb-4" />
+        <h3 className="font-semibold text-xl text-white mb-1">Location</h3>
+        <p className="text-white/70 text-base">Downtown Mall, Lakdikapul, Hyderabad</p>
       </div>
-
-      <div className="text-center p-6 bg-yellow-50 rounded-lg">
-        <GraduationCap className="w-8 h-8 text-yellow-600 mx-auto mb-3" />
-        <h3 className="font-semibold text-gray-800">Eligibility</h3>
-        <p className="text-sm text-gray-600">B.Com/M.Com/MBA students & grads</p>
+      <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
+        <GraduationCap className="w-10 h-10 text-[#FFC107] mx-auto mb-4" />
+        <h3 className="font-semibold text-xl text-white mb-1">Eligibility</h3>
+        <p className="text-white/70 text-base">B.Com/M.Com/MBA students & grads</p>
       </div>
     </div>
   </div>
 </section>
 
 
+
+
       {/* Program Curriculum */}
-      <section  id="curriculum" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Program Curriculum</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-4">
-              {curriculumData.map((item, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <button
-                    onClick={() => setOpenCurriculum(openCurriculum === index ? null : index)}
-                    className="w-full p-6 text-left hover:bg-gray-50 transition-colors duration-200"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                          {item.icon}
-                        </div>
-                        <h3 className="font-semibold text-gray-800">{item.title}</h3>
-                      </div>
-                      <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${openCurriculum === index ? 'rotate-180' : ''}`} />
-                    </div>
-                  </button>
-                  {openCurriculum === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-600 ml-14">{item.description}</p>
-                    </div>
-                  )}
+     <section
+  id="curriculum"
+  className="relative pt-24 pb-24 text-white bg-[#0E1423]"
+  style={{
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+  }}
+>
+  <div className="container mx-auto px-8 relative z-10">
+    <h2 className="text-5xl font-extrabold text-center mb-20 leading-tight tracking-tight">
+      Program <span className="text-[#E31E24]">Curriculum</span>
+    </h2>
+
+    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-14">
+      {curriculumData.map((item, index) => (
+        <div
+          key={index}
+          className="bg-[#121A2C]/90 rounded-3xl p-10 backdrop-blur-md hover:shadow-xl transition"
+        >
+          <button
+            onClick={() => setOpenCurriculum(openCurriculum === index ? null : index)}
+            className="w-full text-left"
+          >
+            <div className="flex items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-[#264174]/20 rounded-full flex items-center justify-center text-[#BCE3F9]">
+                  {item.icon}
                 </div>
-              ))}
+                <h3 className="text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+              </div>
+              <ChevronDown
+                className={`w-5 h-5 text-white/60 transition-transform duration-200 ${
+                  openCurriculum === index ? 'rotate-180' : ''
+                }`}
+              />
             </div>
-            <div className="text-center mt-8">
-              
-              <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center gap-2 mx-auto">
-                <Download className="w-5 h-5" />
-                Download Full Brochure
-              </button>
+          </button>
+
+          {openCurriculum === index && (
+            <div className="mt-6 ml-16 pr-4">
+              <p className="text-white/70 leading-relaxed">{item.description}</p>
             </div>
-          </div>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div  className="text-center mt-20">
+  <a href="/brochure.pdf" download >
+    <button id="brochure" className="bg-[#E31E24] hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold tracking-wide transition-colors duration-300 flex items-center gap-2 mx-auto">
+      <Download className="w-5 h-5" />
+      Download Full Brochure
+    </button>
+  </a>
+</div>
+</div>
+</section>
+
 
       {/* Learning Journey */}
    <section
@@ -298,44 +397,40 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
     backgroundPosition: 'center',
     backgroundBlendMode: 'overlay',
   }}>
-  <div className="container mx-auto px-4">
-    <h2 className="text-4xl font-bold text-center mb-6 text-white">
-      Learning Journey
-    </h2>
+ <div className="container mx-auto px-4 py-24">
+  <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 text-white">
+    Learning Journey
+  </h2>
 
-    <div className="text-center mb-16">
-      <span className="bg-[#BCE3F9] text-[#264174] px-6 py-2 rounded-full font-semibold">
-        Be Industry-Ready in Just 45 Days!
-      </span>
-    </div>
+  <div className="text-center mb-20">
+    <span className="bg-[#BCE3F9] text-[#264174] px-8 py-3 rounded-full font-semibold text-base md:text-lg shadow-md">
+      Be Industry-Ready in Just 45 Days!
+    </span>
+  </div>
 
-    <div className="overflow-x-auto">
-      <div className="flex gap-10 justify-start md:justify-center px-4 md:px-0 min-w-[700px] lg:min-w-full relative">
-        {journeySteps.map((step, index) => (
-          <div
-            key={index}
-            className="relative flex flex-col items-center text-center w-64"
-          >
-            {/* Dot + Line */}
-            <div className="z-10 w-12 h-12 bg-[#BCE3F9] text-[#264174] rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg">
-              {index + 1}
-            </div>
+  <div className="relative">
+    <div className="absolute top-6 left-0 w-full h-px bg-[#BCE3F9]/40 z-0"></div>
 
-            {/* Connecting line */}
-            {index < journeySteps.length - 1 && (
-              <div className="absolute top-6 left-full w-10 h-0.5 bg-[#BCE3F9] hidden md:block"></div>
-            )}
-
-            {/* Content */}
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {step.title}
-            </h3>
-            <p className="text-[#BCE3F9] text-sm">{step.description}</p>
+    <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20">
+      {journeySteps.map((step, index) => (
+        <div key={index} className="flex flex-col items-center text-center relative">
+          {/* Red Dot with soft ring */}
+          <div className="w-14 h-14 bg-[#E31E24] text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg ring-4 ring-[#E31E24]/20">
+            {index + 1}
           </div>
-        ))}
-      </div>
+
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+            {step.title}
+          </h3>
+          <p className="text-[#BCE3F9] text-sm md:text-base max-w-[180px]">
+            {step.description}
+          </p>
+        </div>
+      ))}
     </div>
   </div>
+</div>
+
 </section>
 
 
@@ -343,139 +438,151 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
 
 
       {/* Testimonials */}
-      {/* <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Success Stories</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-lg text-gray-600 mb-6 italic">
-                "Thanks to SuperAccountant, I landed my first accounting job in just 2 months after graduation! 
-                The hands-on training and interview preparation were exceptional."
-              </p>
-              <div className="flex items-center justify-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                <div>
-                  <p className="font-semibold text-gray-800">Happy Student</p>
-                  <p className="text-sm text-gray-600">Accounts Executive at XYZ Corp</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+     
 
       {/* FAQ Section */}
-      <section id ="FAQ" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h2>
-          <div className="max-w-3xl mx-auto">
-            {faqData.map((faq, index) => (
-              <div key={index} className="mb-4 bg-gray-50 rounded-lg">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 rounded-lg"
-                >
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-800">{faq.question}</h3>
-                    <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${openFaq === index ? 'rotate-180' : ''}`} />
-                  </div>
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     {/* FAQ Section */}
+<section
+  id="FAQ"
+  className="relative py-24 text-white"
+  style={{
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+    backgroundColor: '#0E1423',
+  }}
+>
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1423]/90 to-transparent"></div>
 
-      {/* Contact & Enquiry Form */}
-      <section className="py-16 bg-gradient-to-br from-blue-900 to-red-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Ready to Transform Your Career?</h2>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <Phone className="w-6 h-6" />
-                    <span>+91 96529 74428</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Mail className="w-6 h-6" />
-                    <span>info@superaccountant.in</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <MapPin className="w-6 h-6" />
-                    <span>Unit 422, Downtown Mall,Lakdikapul, Hyderabad</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div id="apply-form">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full p-4 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full p-4 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full p-4 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      placeholder="What do you want to ask?"
-                      value={formData.query}
-                      onChange={(e) => setFormData({...formData, query: e.target.value})}
-                      rows={4}
-                      className="w-full p-4 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 text-white resize-none"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-blue-900 p-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                    Apply for Counselling
-                  </button>
-                </form>
-                </div>
-              </div>
+  <div className="container mx-auto px-6 relative z-10 animate-fade-slide">
+    <h2 className="text-5xl font-extrabold text-center mb-16 leading-tight tracking-tight">
+      Frequently <span className="text-[#E31E24]">Asked Questions</span>
+    </h2>
+
+    <div className="relative space-y-12 max-w-4xl mx-auto">
+      {faqData.map((faq, index) => (
+        <div
+          key={index}
+          className={`relative max-w-lg rounded-2xl bg-[#121A2C]/80 backdrop-blur-md shadow-lg transition-all duration-300 ${
+            index % 2 === 0 ? 'ml-auto' : 'mr-auto'
+          }`}
+        >
+          <button
+            onClick={() => setOpenFaq(openFaq === index ? null : index)}
+            className="w-full px-8 py-6 text-left hover:bg-white/5 transition-colors duration-300"
+          >
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold text-white text-lg">{faq.question}</h3>
+              <ChevronDown
+                className={`w-5 h-5 text-white/60 transition-transform duration-300 ${
+                  openFaq === index ? 'rotate-180' : ''
+                }`}
+              />
+            </div>
+          </button>
+
+          {openFaq === index && (
+            <div className="px-8 pb-6 text-white/80 text-base leading-relaxed animate-fade-slide">
+              <p>{faq.answer}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+{/* Contact & Enquiry Form Section */}
+<section
+  className="relative py-24 text-white"
+  style={{
+    backgroundImage: "url('/blue.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundBlendMode: 'overlay',
+    backgroundColor: '#0E1423',
+  }}
+>
+  {/* Top fade into black for smooth transition */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/0 z-0"></div>
+
+  <div className="container mx-auto px-6 relative z-10">
+    <div className="max-w-4xl mx-auto animate-fade-slide">
+      <h2 className="text-5xl font-extrabold text-center mb-16 leading-tight tracking-tight">
+        Ready to <span className="text-[#E31E24]">Transform Your Career?</span>
+      </h2>
+
+      <div className="grid md:grid-cols-2 gap-16">
+        <div>
+          <h3 className="text-2xl font-semibold mb-8">Get in Touch</h3>
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <Phone className="w-6 h-6 text-[#BCE3F9]" />
+              <span>+91 96529 74428</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Mail className="w-6 h-6 text-[#BCE3F9]" />
+              <span>info@superaccountant.in</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <MapPin className="w-6 h-6 text-[#BCE3F9]" />
+              <span>Unit 422, Downtown Mall, Lakdikapul, Hyderabad</span>
             </div>
           </div>
         </div>
-      </section>
+
+        <div id="apply-form">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              required
+            />
+            <textarea
+              placeholder="What do you want to ask?"
+              value={formData.query}
+              onChange={(e) => setFormData({ ...formData, query: e.target.value })}
+              rows={4}
+              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white resize-none"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#E31E24] text-white p-4 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300 flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* form responses script*/}
+    
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
@@ -490,8 +597,6 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Curriculum</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Enquiry</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
