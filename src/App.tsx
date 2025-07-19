@@ -43,7 +43,7 @@ function App() {
     console.log('Form submitted:', formData);
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbyS5Eo98uMDk1CwAYmRE7cOkcZ-O7W6jt676WMqD-M/exec',
+        'https://script.google.com/macros/s/AKfycbz4JKfjTuC17B6ej0g1Rg2hblKSqrzQ8_MhMTrPE4ipNyVE9aDCEeaonuXxU1IID4e8/exec',
         {
           method: 'POST',
           body: JSON.stringify(formData),
@@ -141,8 +141,8 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Apply Now Button */}
+<div className="min-h-screen px-4 sm:px-6 lg:px-8 overflow-x-hidden border border-red-500 rounded-b-2xl">
+{/* Sticky Apply Now Button */}
       {/* <div className="fixed bottom-6 right-6 z-50">
         <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold">
           Apply Now
@@ -153,7 +153,7 @@ function App() {
       {/* Hero Section */}
      {/* Hero Section */}
 <section
-  className="relative min-h-screen flex items-center bg-[#0E1423] overflow-hidden"
+  className="relative min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden rounded-t-2xl"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -161,23 +161,23 @@ function App() {
     backgroundBlendMode: 'overlay',
   }}
 >
-  <div className="container mx-auto px-8 relative z-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+  <div className="container mx-auto px-4 sm:px-8 relative z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
 
       {/* Left Content */}
       <div className="space-y-10">
-        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white">
           Master the Skills <br />
           <span className="text-[#E31E24]">Top Employers</span> Demand.
         </h1>
 
-        <p className="text-xl leading-relaxed text-white/70 max-w-xl">
+        <p className="text-base sm:text-xl leading-relaxed text-white/70 max-w-xl">
           Unlock your future in finance with elite mentorship, practical skills, and career-defining opportunities.
         </p>
 
-        <div className="flex flex-wrap gap-6 pt-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 pt-4">
           <a href="#apply-form">
-          <button className="bg-[#E31E24] text-white px-10 py-4 font-semibold text-lg tracking-wide rounded-full shadow-[0_0_20px_rgba(227,30,36,0.6)] hover:shadow-[0_0_30px_rgba(227,30,36,0.8)] transition duration-300">
+          <button className="bg-[#E31E24] text-white w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 font-semibold text-base sm:text-lg tracking-wide rounded-full shadow-[0_0_20px_rgba(227,30,36,0.6)] hover:shadow-[0_0_30px_rgba(227,30,36,0.8)] transition duration-300">
   Apply Now
 </button>
 
@@ -185,7 +185,7 @@ function App() {
           </a>
           <a href="#brochure">
 
-          <button  className="border border-white/20 text-white/80 hover:bg-white/10 px-10 py-4 rounded-full transition duration-300 tracking-wide">
+          <button  className="border border-white/20 text-white/80 hover:bg-white/10 w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full transition duration-300 tracking-wide">
             Download Brochure
           </button>
           </a>
@@ -193,12 +193,12 @@ function App() {
       </div>
 
       {/* Right Content: Hero Image */}
-      <div className="flex justify-center lg:justify-end relative">
+      <div className="flex justify-center lg:justify-end relative mt-10 lg:mt-0">
         <div className="relative">
           <img
             src="/herosection.png"
             alt="Super Accountant Hero"
-            className="h-[500px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105"
+            className="h-64 sm:h-96 md:h-[500px] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105"
           />
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#0E1423] via-transparent to-transparent opacity-20 blur-2xl"></div>
         </div>
@@ -213,7 +213,7 @@ function App() {
 
 {/* Why SuperAccountant */}
 <section 
-  className="relative py-24 bg-[#0E1423] text-white "
+  className="relative py-16 sm:py-24 bg-[#0E1423] text-white "
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -224,12 +224,12 @@ function App() {
   {/* Softer, more natural top gradient */}
   <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent z-0 pointer-events-none"></div>
 
-  <div className="relative container mx-auto px-8 z-10">
-    <h2 className="text-5xl font-extrabold text-center mb-18 leading-tight tracking-tight">
+  <div className="relative container mx-auto px-4 sm:px-8 z-10">
+    <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-18 leading-tight tracking-tight">
       Why <span className="text-[#E31E24]">SuperAccountant?</span>
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mt-10 sm:mt-16">
       <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
         <div className="w-20 h-20 bg-[#E31E24]/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <Award className="w-10 h-10 text-[#E31E24]" />
@@ -276,7 +276,7 @@ function App() {
 
       {/* Program Overview */}
       <section
-  className="relative py-24 text-white"
+  className="relative py-16 sm:py-24 text-white"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -285,18 +285,18 @@ function App() {
     backgroundColor: '#0E1423',
   }}
 >
-  <div className="container mx-auto px-8 relative z-10">
-    <div className="max-w-4xl mx-auto text-center mb-16">
-      <h2 className="text-5xl font-extrabold mb-6 leading-tight tracking-tight">
+  <div className="container mx-auto px-4 sm:px-8 relative z-10">
+    <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+      <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight tracking-tight">
         Program <span className="text-[#E31E24]">Overview</span>
       </h2>
-      <p className="text-lg leading-relaxed text-white/80 max-w-2xl mx-auto">
+      <p className="text-base sm:text-lg leading-relaxed text-white/80 max-w-2xl mx-auto">
         SuperAccountant is a 45-day program designed to make you industry-ready in finance and accounting.
         You'll gain real-world skills, industry-recognized tools, and personal mentorship to land a job fast.
       </p>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 max-w-5xl mx-auto">
       <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
         <Clock className="w-10 h-10 text-[#BCE3F9] mx-auto mb-4" />
         <h3 className="font-semibold text-xl text-white mb-1">Duration</h3>
@@ -327,7 +327,7 @@ function App() {
       {/* Program Curriculum */}
      <section
   id="curriculum"
-  className="relative pt-24 pb-24 text-white bg-[#0E1423]"
+  className="relative pt-16 sm:pt-24 pb-16 sm:pb-24 text-white bg-[#0E1423]"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -335,12 +335,12 @@ function App() {
     backgroundBlendMode: 'overlay',
   }}
 >
-  <div className="container mx-auto px-8 relative z-10">
-    <h2 className="text-5xl font-extrabold text-center mb-20 leading-tight tracking-tight">
+  <div className="container mx-auto px-4 sm:px-8 relative z-10">
+    <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-20 leading-tight tracking-tight">
       Program <span className="text-[#E31E24]">Curriculum</span>
     </h2>
 
-    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-14">
+    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-14">
       {curriculumData.map((item, index) => (
         <div
           key={index}
@@ -376,7 +376,7 @@ function App() {
       ))}
     </div>
 
-    <div  className="text-center mt-20">
+    <div  className="text-center mt-10 sm:mt-20">
   <a href="/brochure.pdf" download >
     <button id="brochure" className="bg-[#E31E24] hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold tracking-wide transition-colors duration-300 flex items-center gap-2 mx-auto">
       <Download className="w-5 h-5" />
@@ -390,20 +390,20 @@ function App() {
 
       {/* Learning Journey */}
    <section
-className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
+className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:min-h-[50vh]"  style={{
     backgroundColor: '#0E1423',
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundBlendMode: 'overlay',
   }}>
- <div className="container mx-auto px-4 py-24">
-  <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 text-white">
+ <div className="container mx-auto px-2 sm:px-4 py-12 sm:py-24">
+  <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-center mb-4 sm:mb-8 text-white">
     Learning Journey
   </h2>
 
-  <div className="text-center mb-20">
-    <span className="bg-[#BCE3F9] text-[#264174] px-8 py-3 rounded-full font-semibold text-base md:text-lg shadow-md">
+  <div className="text-center mb-10 sm:mb-20">
+    <span className="bg-[#BCE3F9] text-[#264174] px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base md:text-lg shadow-md">
       Be Industry-Ready in Just 45 Days!
     </span>
   </div>
@@ -411,9 +411,9 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
   <div className="relative">
     <div className="absolute top-6 left-0 w-full h-px bg-[#BCE3F9]/40 z-0"></div>
 
-    <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20">
+    <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-20">
       {journeySteps.map((step, index) => (
-        <div key={index} className="flex flex-col items-center text-center relative">
+        <div key={index} className="flex flex-col items-center text-center relative min-w-[120px] max-w-[180px] mx-auto">
           {/* Red Dot with soft ring */}
           <div className="w-14 h-14 bg-[#E31E24] text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg ring-4 ring-[#E31E24]/20">
             {index + 1}
@@ -444,7 +444,7 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
      {/* FAQ Section */}
 <section
   id="FAQ"
-  className="relative py-24 text-white"
+  className="relative py-16 sm:py-24 text-white "
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -455,12 +455,12 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
 >
   <div className="absolute inset-0 bg-gradient-to-t from-[#0E1423]/90 to-transparent"></div>
 
-  <div className="container mx-auto px-6 relative z-10 animate-fade-slide">
-    <h2 className="text-5xl font-extrabold text-center mb-16 leading-tight tracking-tight">
+  <div className="container mx-auto px-2 sm:px-6 relative z-10 animate-fade-slide">
+    <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-16 leading-tight tracking-tight">
       Frequently <span className="text-[#E31E24]">Asked Questions</span>
     </h2>
 
-    <div className="relative space-y-12 max-w-4xl mx-auto">
+    <div className="relative space-y-8 sm:space-y-12 max-w-4xl mx-auto">
       {faqData.map((faq, index) => (
         <div
           key={index}
@@ -496,7 +496,7 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
 
 {/* Contact & Enquiry Form Section */}
 <section
-  className="relative py-24 text-white"
+  className="relative py-16 sm:py-24 text-white"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -508,16 +508,16 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
   {/* Top fade into black for smooth transition */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/0 z-0"></div>
 
-  <div className="container mx-auto px-6 relative z-10">
+  <div className="container mx-auto px-2 sm:px-6 relative z-10">
     <div className="max-w-4xl mx-auto animate-fade-slide">
-      <h2 className="text-5xl font-extrabold text-center mb-16 leading-tight tracking-tight">
+      <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-16 leading-tight tracking-tight">
         Ready to <span className="text-[#E31E24]">Transform Your Career?</span>
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16">
         <div>
-          <h3 className="text-2xl font-semibold mb-8">Get in Touch</h3>
-          <div className="space-y-6">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-8">Get in Touch</h3>
+          <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center gap-4">
               <Phone className="w-6 h-6 text-[#BCE3F9]" />
               <span>+91 96529 74428</span>
@@ -534,13 +534,13 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
         </div>
 
         <div id="apply-form">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <input
               type="text"
               placeholder="Full Name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
               required
             />
             <input
@@ -548,7 +548,7 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
               placeholder="Email Address"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
               required
             />
             <input
@@ -556,7 +556,7 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
               placeholder="Phone Number"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
+              className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white"
               required
             />
             <textarea
@@ -564,11 +564,11 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
               value={formData.query}
               onChange={(e) => setFormData({ ...formData, query: e.target.value })}
               rows={4}
-              className="w-full p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white resize-none"
+              className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-white/20 placeholder-white/60 text-white resize-none"
             />
             <button
               type="submit"
-              className="w-full bg-[#E31E24] text-white p-4 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300 flex items-center justify-center gap-2"
+              className="w-full bg-[#E31E24] text-white p-3 sm:p-4 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300 flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-5 h-5" />
               Submit
@@ -585,38 +585,38 @@ className="relative text-white py-16 flex items-center min-h-[50vh]"  style={{
     
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="bg-gray-900 text-white py-8 sm:py-12">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">SuperAccountant.in</h3>
-              <p className="text-gray-400">Transforming careers through practical finance and accounting education.</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">SuperAccountant.in</h3>
+              <p className="text-gray-400 text-sm sm:text-base">Transforming careers through practical finance and accounting education.</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-2 sm:mb-4">Quick Links</h4>
+              <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Curriculum</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact Info</h4>
-              <div className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-2 sm:mb-4">Contact Info</h4>
+              <div className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
                 <p>+91 96529 74428</p>
                 <p>info@superaccountant.in</p>
                 <p>Unit 422, Downtown Mall,Lakdikapul, Hyderabad</p>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
+              <h4 className="font-semibold mb-2 sm:mb-4">Follow Us</h4>
+              <div className="flex space-x-2 sm:space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Facebook</a>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a>
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-xs sm:text-base">
             <p>&copy; 2024 SuperAccountant.in. All rights reserved.</p>
           </div>
         </div>
