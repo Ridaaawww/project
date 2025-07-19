@@ -131,7 +131,7 @@ function App() {
     { title: "Tool-Based Training", description: "Hands-on practice with Excel, Tally, PowerBI" },
     { title: "Case Studies", description: "Real-world projects and practical applications" },
     { title: "Soft Skills + Mock Interviews", description: "Professional development and interview preparation" },
-    { title: "Placement Support", description: "7 guaranteed interviews and career guidance" }
+    { title: "Placement Support", description: " Guaranteed career guidance" }
   ];
 
   return (
