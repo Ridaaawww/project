@@ -40,34 +40,28 @@ function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // console.log('Form submitted:', formData);
     try {
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbz4JKfjTuC17B6ej0g1Rg2hblKSqrzQ8_MhMTrPE4ipNyVE9aDCEeaonuXxU1IID4e8/exec',
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzRAZEaqDPPhKA_yT_hiAA9xmBBpVAZvXskj9oj0xFxjA20dG2AKJKguu2Ofhny6uekdg/exec",
         {
           method: 'POST',
+          mode: "no-cors",
           body: JSON.stringify(formData),
           headers: {
             'Content-Type': 'application/json',
           },
         }
       );
-  
-      const result = await response.json();
-      console.log('Google Sheets response:', result);
-  
-      if (result.result === 'success') {
-        alert('Thank you for your inquiry! We will contact you soon.');
-        setFormData({ name: '', email: '', phone: '', query: '' });
-      } else {
-        alert('Something went wrong. Please try again later.');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('There was an error submitting the form. Please try again.');
-    }
+   // ✅ You won't get a readable response, so we assume success
+   alert('Thank you for your inquiry! We will contact you soon.');
+   setFormData({ name: '', email: '', phone: '', query: '' });
 
-  };
+ } catch (error) {
+   console.error('Submission error:', error);
+   alert('There was an error submitting the form. Please try again.');
+ }
+};
 
   const faqData = [
     {
@@ -141,7 +135,7 @@ function App() {
   ];
 
   return (
-<div className="min-h-screen px-4 sm:px-6 lg:px-8 overflow-x-hidden border border-red-500 rounded-b-2xl">
+<div className="min-h-screen bg-white overflow-x-hidden rounded-b-2xl">
 {/* Sticky Apply Now Button */}
       {/* <div className="fixed bottom-6 right-6 z-50">
         <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold">
@@ -151,9 +145,8 @@ function App() {
       <Nav />
 
       {/* Hero Section */}
-     {/* Hero Section */}
 <section
-  className="relative min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden rounded-t-2xl"
+  className="relative min-h-[70vh] sm:min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden rounded-t-2xl pt-6 pb-4 sm:pt-16 sm:pb-10"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -161,21 +154,21 @@ function App() {
     backgroundBlendMode: 'overlay',
   }}
 >
-  <div className="container mx-auto px-4 sm:px-8 relative z-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+  <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 pb-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center justify-center">
 
       {/* Left Content */}
-      <div className="space-y-10">
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-white">
+      <div className="space-y-10 text-center lg:text-left flex flex-col items-center lg:items-start justify-center w-full pt-6">
+        <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
           Master the Skills <br />
           <span className="text-[#E31E24]">Top Employers</span> Demand.
         </h1>
 
-        <p className="text-base sm:text-xl leading-relaxed text-white/70 max-w-xl">
+        <p className="text-base sm:text-lg leading-relaxed text-white/70 max-w-xl mx-auto lg:mx-0">
           Unlock your future in finance with elite mentorship, practical skills, and career-defining opportunities.
         </p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 pt-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 pt-4 w-full items-center lg:items-start justify-center lg:justify-start">
           <a href="#apply-form">
           <button className="bg-[#E31E24] text-white w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 font-semibold text-base sm:text-lg tracking-wide rounded-full shadow-[0_0_20px_rgba(227,30,36,0.6)] hover:shadow-[0_0_30px_rgba(227,30,36,0.8)] transition duration-300">
   Apply Now
@@ -193,12 +186,12 @@ function App() {
       </div>
 
       {/* Right Content: Hero Image */}
-      <div className="flex justify-center lg:justify-end relative mt-10 lg:mt-0">
+      <div className="flex justify-center lg:justify-end relative mt-8 lg:mt-0 w-full">
         <div className="relative">
           <img
             src="/herosection.png"
             alt="Super Accountant Hero"
-            className="h-64 sm:h-96 md:h-[500px] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105"
+            className="h-48 sm:h-80 md:h-[400px] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105 mx-auto"
           />
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#0E1423] via-transparent to-transparent opacity-20 blur-2xl"></div>
         </div>
@@ -213,7 +206,7 @@ function App() {
 
 {/* Why SuperAccountant */}
 <section 
-  className="relative py-16 sm:py-24 bg-[#0E1423] text-white "
+  className="relative py-10 sm:py-16 bg-[#0E1423] text-white "
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -224,12 +217,12 @@ function App() {
   {/* Softer, more natural top gradient */}
   <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent z-0 pointer-events-none"></div>
 
-  <div className="relative container mx-auto px-4 sm:px-8 z-10">
+  <div className="relative w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
     <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-18 leading-tight tracking-tight">
       Why <span className="text-[#E31E24]">SuperAccountant?</span>
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mt-10 sm:mt-16">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mt-8 sm:mt-12">
       <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
         <div className="w-20 h-20 bg-[#E31E24]/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <Award className="w-10 h-10 text-[#E31E24]" />
@@ -237,7 +230,7 @@ function App() {
         <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#E31E24] transition">
           100% Placement Assistance
         </h3>
-        <p className="text-white/60 text-base">7 Guaranteed Interviews</p>
+        <p className="text-white/60 text-base">Guaranteed placement help till you're in</p>
       </div>
 
       <div className="text-center p-10 rounded-3xl bg-[#121A2C] hover:shadow-xl transition duration-300 group">
@@ -276,7 +269,7 @@ function App() {
 
       {/* Program Overview */}
       <section
-  className="relative py-16 sm:py-24 text-white"
+  className="relative py-10 sm:py-16 text-white"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -285,8 +278,8 @@ function App() {
     backgroundColor: '#0E1423',
   }}
 >
-  <div className="container mx-auto px-4 sm:px-8 relative z-10">
-    <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+  <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16 px-4">
       <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight tracking-tight">
         Program <span className="text-[#E31E24]">Overview</span>
       </h2>
@@ -296,7 +289,7 @@ function App() {
       </p>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-5xl mx-auto">
       <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
         <Clock className="w-10 h-10 text-[#BCE3F9] mx-auto mb-4" />
         <h3 className="font-semibold text-xl text-white mb-1">Duration</h3>
@@ -305,7 +298,11 @@ function App() {
       <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
         <DollarSign className="w-10 h-10 text-[#10B981] mx-auto mb-4" />
         <h3 className="font-semibold text-xl text-white mb-1">Fees</h3>
-        <p className="text-white/70 text-base">₹24,999/- (Incl. GST)</p>
+        <div className="flex flex-col items-center">
+          <span className="text-lg text-white/50 line-through">₹50,000</span>
+          <span className="text-2xl font-bold text-[#E31E24]">₹24,999/- <span className="text-base text-white/70">(Incl. GST)</span></span>
+          <span className="mt-1 px-3 py-1 bg-[#E31E24] text-white text-xs rounded-full font-semibold">Early Bird Offer</span>
+        </div>
       </div>
       <div className="text-center p-10 rounded-3xl bg-[#264174]/90 backdrop-blur-md shadow-lg">
         <MapPin className="w-10 h-10 text-[#E31E24] mx-auto mb-4" />
@@ -327,7 +324,7 @@ function App() {
       {/* Program Curriculum */}
      <section
   id="curriculum"
-  className="relative pt-16 sm:pt-24 pb-16 sm:pb-24 text-white bg-[#0E1423]"
+  className="relative pt-10 sm:pt-16 pb-10 sm:pb-16 text-white bg-[#0E1423]"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -335,12 +332,12 @@ function App() {
     backgroundBlendMode: 'overlay',
   }}
 >
-  <div className="container mx-auto px-4 sm:px-8 relative z-10">
+  <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-20 leading-tight tracking-tight">
       Program <span className="text-[#E31E24]">Curriculum</span>
     </h2>
 
-    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-14">
+    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10 px-4">
       {curriculumData.map((item, index) => (
         <div
           key={index}
@@ -376,7 +373,7 @@ function App() {
       ))}
     </div>
 
-    <div  className="text-center mt-10 sm:mt-20">
+    <div  className="text-center mt-8 sm:mt-16 px-4">
   <a href="/brochure.pdf" download >
     <button id="brochure" className="bg-[#E31E24] hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold tracking-wide transition-colors duration-300 flex items-center gap-2 mx-auto">
       <Download className="w-5 h-5" />
@@ -390,45 +387,68 @@ function App() {
 
       {/* Learning Journey */}
    <section
-className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:min-h-[50vh]"  style={{
+className="relative text-white py-8 sm:py-14 flex items-center min-h-[40vh] sm:min-h-[50vh]"  style={{
     backgroundColor: '#0E1423',
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundBlendMode: 'overlay',
   }}>
- <div className="container mx-auto px-2 sm:px-4 py-12 sm:py-24">
+ <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-4 py-8 sm:py-16">
   <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-center mb-4 sm:mb-8 text-white">
     Learning Journey
   </h2>
 
-  <div className="text-center mb-10 sm:mb-20">
+  <div className="text-center mb-10 sm:mb-20 px-4">
     <span className="bg-[#BCE3F9] text-[#264174] px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base md:text-lg shadow-md">
       Be Industry-Ready in Just 45 Days!
     </span>
   </div>
 
-  <div className="relative">
-    <div className="absolute top-6 left-0 w-full h-px bg-[#BCE3F9]/40 z-0"></div>
+    <div className="relative">
+      {/* Desktop horizontal line */}
+      <div className="hidden md:block absolute top-6 left-0 w-full h-px bg-[#BCE3F9]/40 z-0"></div>
+      {/* Mobile vertical line */}
+      <div className="md:hidden absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 bg-[#BCE3F9]/30 z-0 rounded-full"></div>
 
-    <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-20">
-      {journeySteps.map((step, index) => (
-        <div key={index} className="flex flex-col items-center text-center relative min-w-[120px] max-w-[180px] mx-auto">
-          {/* Red Dot with soft ring */}
-          <div className="w-14 h-14 bg-[#E31E24] text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg ring-4 ring-[#E31E24]/20">
-            {index + 1}
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16">
+        {journeySteps.map((step, index) => (
+          <div
+            key={index}
+            className={
+              `relative flex flex-col items-center text-center min-w-[120px] max-w-[220px] mx-auto md:mx-0 ` +
+              (index % 2 === 0
+                ? 'md:items-center md:self-auto self-start ml-0 md:ml-0'
+                : 'md:items-center md:self-auto self-end mr-0 md:mr-0')
+            }
+            style={{
+              marginLeft: index % 2 === 0 ? '0' : undefined,
+              marginRight: index % 2 !== 0 ? '0' : undefined,
+            }}
+          >
+            {/* Connector for mobile zig-zag */}
+            {index !== 0 && (
+              <div
+                className={`md:hidden absolute top-0 ${index % 2 === 0 ? '-left-6' : '-right-6'} w-6 h-6 flex items-center justify-center`}
+              >
+                <div className="w-1 h-6 bg-[#BCE3F9]/40 rounded-full"></div>
+              </div>
+            )}
+            {/* Red Dot with soft ring */}
+            <div className="w-14 h-14 bg-[#E31E24] text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-lg ring-4 ring-[#E31E24]/20 z-10">
+              {index + 1}
+            </div>
+
+            <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+              {step.title}
+            </h3>
+            <p className="text-[#BCE3F9] text-sm md:text-base max-w-[200px]">
+              {step.description}
+            </p>
           </div>
-
-          <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
-            {step.title}
-          </h3>
-          <p className="text-[#BCE3F9] text-sm md:text-base max-w-[180px]">
-            {step.description}
-          </p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  </div>
 </div>
 
 </section>
@@ -444,7 +464,7 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
      {/* FAQ Section */}
 <section
   id="FAQ"
-  className="relative py-16 sm:py-24 text-white "
+  className="relative py-10 sm:py-16 text-white "
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -455,12 +475,12 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
 >
   <div className="absolute inset-0 bg-gradient-to-t from-[#0E1423]/90 to-transparent"></div>
 
-  <div className="container mx-auto px-2 sm:px-6 relative z-10 animate-fade-slide">
+  <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-6 relative z-10 animate-fade-slide">
     <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-16 leading-tight tracking-tight">
       Frequently <span className="text-[#E31E24]">Asked Questions</span>
     </h2>
 
-    <div className="relative space-y-8 sm:space-y-12 max-w-4xl mx-auto">
+    <div className="relative space-y-6 sm:space-y-10 max-w-4xl mx-auto px-4">
       {faqData.map((faq, index) => (
         <div
           key={index}
@@ -496,7 +516,7 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
 
 {/* Contact & Enquiry Form Section */}
 <section
-  className="relative py-16 sm:py-24 text-white"
+  className="relative py-10 sm:py-16 text-white"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -508,13 +528,13 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
   {/* Top fade into black for smooth transition */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/0 z-0"></div>
 
-  <div className="container mx-auto px-2 sm:px-6 relative z-10">
-    <div className="max-w-4xl mx-auto animate-fade-slide">
+  <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-6 relative z-10">
+    <div className="max-w-4xl mx-auto animate-fade-slide px-4">
       <h2 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-16 leading-tight tracking-tight">
         Ready to <span className="text-[#E31E24]">Transform Your Career?</span>
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
         <div>
           <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-8">Get in Touch</h3>
           <div className="space-y-4 sm:space-y-6">
@@ -586,8 +606,8 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 sm:py-12">
-        <div className="container mx-auto px-2 sm:px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">SuperAccountant.in</h3>
               <p className="text-gray-400 text-sm sm:text-base">Transforming careers through practical finance and accounting education.</p>
@@ -617,7 +637,7 @@ className="relative text-white py-10 sm:py-16 flex items-center min-h-[40vh] sm:
             </div>
           </div>
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-xs sm:text-base">
-            <p>&copy; 2024 SuperAccountant.in. All rights reserved.</p>
+            <p>&copy; 2025 SuperAccountant.in. All rights reserved.</p>
           </div>
         </div>
       </footer>
