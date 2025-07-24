@@ -89,12 +89,17 @@ function App() {
       icon: <Target className="w-6 h-6" />
     },
     {
+      title: "Accounting & Bookkeeping",
+      description: "Double-entry bookkeeping, journal entries, and financial statements",
+      icon: <BookOpen className="w-6 h-6" />
+    },
+    {
       title: "MS Excel",
       description: "Advanced Excel functions, pivot tables, and financial modeling",
       icon: <BarChart3 className="w-6 h-6" />
     },
     {
-      title: "GST",
+      title: "Goods & Service Tax(GST)",
       description: "Complete GST compliance, returns filing, and calculations",
       icon: <Calculator className="w-6 h-6" />
     },
@@ -103,18 +108,18 @@ function App() {
       description: "Tax planning, return preparation, and compliance management",
       icon: <FileText className="w-6 h-6" />
     },
-    {
-      title: "Accounting & Bookkeeping",
-      description: "Double-entry bookkeeping, journal entries, and financial statements",
-      icon: <BookOpen className="w-6 h-6" />
-    },
+    // {
+    //   title: "Accounting & Bookkeeping",
+    //   description: "Double-entry bookkeeping, journal entries, and financial statements",
+    //   icon: <BookOpen className="w-6 h-6" />
+    // },
     {
       title: "Financial Planning",
       description: "Budgeting, forecasting, and financial analysis techniques",
       icon: <TrendingUp className="w-6 h-6" />
     },
     {
-      title: "Audit & Compliance",
+      title: "Accounting Softwares",
       description: "Internal audit procedures and regulatory compliance",
       icon: <CheckCircle className="w-6 h-6" />
     },
@@ -300,7 +305,7 @@ function App() {
         <h3 className="font-semibold text-xl text-white mb-1">Fees</h3>
         <div className="flex flex-col items-center">
           <span className="text-lg text-white/50 line-through">₹50,000</span>
-          <span className="text-2xl font-bold text-[#E31E24]">₹24,999/- <span className="text-base text-white/70">(Incl. GST)</span></span>
+          <span className="text-2xl font-bold text-[#E31E24]">₹24,999/- <span className="text-base text-white/70">(Excl. GST)</span></span>
           <span className="mt-1 px-3 py-1 bg-[#E31E24] text-white text-xs rounded-full font-semibold">Early Bird Offer</span>
         </div>
       </div>
