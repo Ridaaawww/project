@@ -26,6 +26,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import Nav from "./Nav.tsx"
+import { Analytics } from '@vercel/analytics/react';
 
 
 function App() {
@@ -148,7 +149,7 @@ function App() {
         </button>
       </div> */}
       <Nav />
-
+      <Analytics />
       {/* Hero Section */}
 <section
   className="relative min-h-[70vh] sm:min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden rounded-t-2xl pt-6 pb-4 sm:pt-16 sm:pb-10"
