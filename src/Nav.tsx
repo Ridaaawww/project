@@ -3,14 +3,14 @@ import { useState } from "react";
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <header className="flex items-center justify-between px-4 md:px-12 py-2 md:py-4 bg-white/80 shadow-xl backdrop-blur-md text-gray-800 sticky top-0 z-50 rounded-b-2xl">
+    <header className="flex items-center justify-between px-4 md:px-12 py-0.5 md:py-1 bg-white/80 shadow-xl backdrop-blur-md text-gray-800 sticky top-0 z-50">
       {/* Left: Logo and Tagline */}
       <div className="flex items-center space-x-2 md:space-x-4">
         <div className="relative w-[160px] h-[48px] md:w-[300px] md:h-[80px]">
           <img
             src="/SuperAccountant.png"
             alt="Super Accountant Logo"
-            className="h-[60px] md:h-[120px] w-full object-contain"
+            className="h-[60px] md:h-[100px] w-full object-contain"
           />
         </div>
       </div>
