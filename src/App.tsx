@@ -636,9 +636,9 @@ className="relative text-white py-8 sm:py-14 flex items-center min-h-[40vh] sm:m
             <div>
               <h4 className="font-semibold mb-2 sm:mb-4">Follow Us</h4>
               <div className="flex space-x-2 sm:space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Facebook</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                <a href="https://jsdl.in/RSL-QZE1755758038" className="text-gray-400 hover:text-white transition-colors">Justdial</a>
+                <a href="https://www.linkedin.com/company/super-accountant/" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://www.instagram.com/superaccountant_in/" className="text-gray-400 hover:text-white transition-colors">Instagram</a>
               </div>
             </div>
           </div>
