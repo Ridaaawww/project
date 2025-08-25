@@ -152,7 +152,7 @@ function App() {
       <Analytics />
       {/* Hero Section */}
 <section
-  className="relative min-h-[70vh] sm:min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden rounded-t-2xl pt-6 pb-4 sm:pt-16 sm:pb-10"
+  className="relative min-h-[70vh] sm:min-h-screen flex flex-col lg:flex-row items-center bg-[#0E1423] overflow-hidden pt-1 pb-4 sm:pt-8 sm:pb-10"
   style={{
     backgroundImage: "url('/blue.png')",
     backgroundSize: 'cover',
@@ -160,11 +160,11 @@ function App() {
     backgroundBlendMode: 'overlay',
   }}
 >
-  <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 pb-4">
+  <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 pb-4">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center justify-center">
 
       {/* Left Content */}
-      <div className="space-y-10 text-center lg:text-left flex flex-col items-center lg:items-start justify-center w-full pt-6">
+      <div className="space-y-10 text-center lg:text-left flex flex-col items-center lg:items-start justify-center w-full pt-2">
         <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
           Master the Skills <br />
           <span className="text-[#E31E24]">Top Employers</span> Demand.
@@ -380,7 +380,7 @@ function App() {
     </div>
 
     <div  className="text-center mt-8 sm:mt-16 px-4">
-  <a href="/brochure.pdf" download >
+  <a href="/SuperAccountant 2025 Brochure .pdf" download >
     <button id="brochure" className="bg-[#E31E24] hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold tracking-wide transition-colors duration-300 flex items-center gap-2 mx-auto">
       <Download className="w-5 h-5" />
       Download Full Brochure
@@ -546,7 +546,7 @@ className="relative text-white py-8 sm:py-14 flex items-center min-h-[40vh] sm:m
           <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center gap-4">
               <Phone className="w-6 h-6 text-[#BCE3F9]" />
-              <span>+91 96529 74428</span>
+              <span>+91 81061 38866</span>
             </div>
             <div className="flex items-center gap-4">
               <Mail className="w-6 h-6 text-[#BCE3F9]" />
